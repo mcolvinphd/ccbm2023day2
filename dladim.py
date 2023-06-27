@@ -29,3 +29,27 @@ for ipart in range(npart):
             grid[(x+side-1)%side][y]+grid[x][(y+side-1)%side])>0:
             break
 drawgrid(grid, side)
+N=0
+Ns=[]
+Ls=[]
+for L in range(1,side//2,2):
+    for i in range(side//2-L//2, side//2+L//2+1):
+        for j in range(side//2-L//2, side//2+L//2+1):
+            if grid[i][j]==1:
+                N+=1
+    #print(N, L)
+    Ns.append(log(N))
+    Ls.append(log(L))
+    N=0
+y=np.array(Ns)
+x=np.array(Ls)
+## Calculate slope
+n=len(x)
+slope=(n*np.sum(x*y)-np.sum(x)*np.sum(y))/(n*np.sum(x*x)-np.sum(x)**2)
+print("slope=",slope)
+plt.plot(Ls,Ns)
+plt.title("Dimensionality=%5.3f"%(slope))
+plt.xlabel("Log(box length)")
+plt.ylabel("Log(particles in box)")
+plt.show()
+

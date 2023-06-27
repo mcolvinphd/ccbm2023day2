@@ -6,12 +6,12 @@ states=[0]*nstates
 T=3 # Set temperature
 ntrials=10000 
 # Run Metropolis Monte Carlo
-for trial in range(ntrials): 
-    newstate=choice(range(nstates)) 
-    x=exp(-(newstate-state)/T) 
-    if x>random(): 
-        state=newstate 
-    states[state]+=1 
+
+
+
+
+
+
 # Calculate expected Boltzmann distribution
 Boltz=[0]*nstates 
 partition=0. 
